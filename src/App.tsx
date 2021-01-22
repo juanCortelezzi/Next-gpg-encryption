@@ -1,25 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import { Box, Tabs, Tab, TabList, TabPanels, TabPanel } from "@chakra-ui/react";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box as="main">
+      <Tabs>
+        <TabList>
+          <Tab>Create Keys</Tab>
+          <Tab>Encrypt</Tab>
+          <Tab>Decrypt</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>1</TabPanel>
+          <TabPanel>2</TabPanel>
+          <TabPanel>3</TabPanel>
+        </TabPanels>
+      </Tabs>
+    </Box>
   );
 }
 
