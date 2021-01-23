@@ -1,5 +1,5 @@
 import { Box, Tabs, Tab, TabList, TabPanels, TabPanel } from "@chakra-ui/react";
-import CreateKeysPanel from "./createKeys";
+import CreateKeysPanel from "./createKeysPanel";
 function App() {
   return (
     <Box as="main">
