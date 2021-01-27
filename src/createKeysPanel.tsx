@@ -18,6 +18,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { createKeyPair } from "./utils/crypto";
 import KeyPost from "./components/keyPost";
+import { createFileURL } from "./utils/createFileURL";
 
 interface ISubmitProps {
   name: string;
@@ -36,8 +37,6 @@ interface IAlertData {
   open: boolean;
   message: string;
 }
-
-const createFileURL = (data: string) => URL.createObjectURL(new Blob([data]));
 
 export default function CreateKeysPanel() {
   const [show, setShow] = useState<boolean>(false);
