@@ -15,27 +15,12 @@ import DropZone from "./components/dropzone";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { decryptMessage } from "./utils/crypto";
+import readFileAsText from "./utils/readFileAsText";
 
 interface IProps {
   file: any[];
   password: string;
   messageFile: any[];
-}
-
-function readFileAsText(file: File): Promise<string> {
-  return new Promise(function (resolve, reject) {
-    let fr = new FileReader();
-
-    fr.onload = function () {
-      resolve(fr.result as string);
-    };
-
-    fr.onerror = function () {
-      reject(fr);
-    };
-
-    fr.readAsText(file);
-  });
 }
 
 export default function EncryptPanel() {
@@ -66,7 +51,7 @@ export default function EncryptPanel() {
         <FormControl isRequired isInvalid={errors?.file ? true : false}>
           <FormLabel>Private Key</FormLabel>
           <DropZone name="file" control={control} setValue={setValue} />
-          <FormErrorMessage>{errors?.file?.message}</FormErrorMessage>
+          <FormErrorMessage>{errors?.file && "No file selected"}</FormErrorMessage>
         </FormControl>
         <FormControl isRequired isInvalid={errors?.password ? true : false}>
           <FormLabel>Password</FormLabel>
@@ -89,15 +74,17 @@ export default function EncryptPanel() {
         <FormControl isRequired isInvalid={errors?.file ? true : false}>
           <FormLabel>Message</FormLabel>
           <DropZone name="messageFile" control={control} setValue={setValue} />
-          <FormErrorMessage>{errors?.messageFile?.message}</FormErrorMessage>
+          <FormErrorMessage>{errors?.file && "No file selected"}</FormErrorMessage>
         </FormControl>
         <Button isFullWidth bg="teal.500" type="submit">
           Decrypt Message
         </Button>
       </Stack>
-      <Box my={6} borderWidth="1px" borderRadius="lg" p={6}>
-        <Text>{showDecrytedMessage ? showDecrytedMessage : null}</Text>
-      </Box>
+      {showDecrytedMessage && (
+        <Box my={6} borderWidth="1px" borderRadius="lg" p={6}>
+          <Text>{showDecrytedMessage}</Text>
+        </Box>
+      )}
     </Container>
   );
 }

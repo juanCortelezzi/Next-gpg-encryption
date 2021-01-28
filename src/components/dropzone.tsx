@@ -13,6 +13,7 @@ export default function DropZone({ control, name, setValue }: IProps) {
       control={control}
       name={name}
       defaultValue={[]}
+      rules={{ validate: { filled: (value) => value.length === 1 } }}
       render={({ onChange, onBlur, value }) => (
         <>
           {value[0] ? (
@@ -25,7 +26,7 @@ export default function DropZone({ control, name, setValue }: IProps) {
                   fontSize="20px"
                   icon={<MdRefresh />}
                   onClick={() => {
-                    setValue("file", []);
+                    setValue(name, []);
                   }}
                 />
               </Flex>

@@ -5,7 +5,7 @@ import EncryptPanel from "./encryptPanel";
 function App() {
   return (
     <Box as="main">
-      <Tabs isManual isFitted variant="enclosed">
+      <Tabs isManual isFitted variant="enclosed" defaultIndex={1}>
         <TabList>
           <Tab>
             <Text fontSize="xl">Create Keys</Text>
